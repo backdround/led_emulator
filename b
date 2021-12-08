@@ -6,6 +6,7 @@ set -o errexit
 # Переход в директорию для сборки.
 # В этой директории хранятся временные файлы.
 DESTDIR="$(dirname "$0")/build"
+mkdir -p "$DESTDIR"
 cd "$DESTDIR"
 
 # Сборка проекта.
