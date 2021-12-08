@@ -9,12 +9,12 @@ namespace ptos {
     using namespace std::chrono;
     using time = long;
 
-    // Остановить процесс исполнения на t милисекунд.
+    // Остановить процесс исполнения на t миллисекунд.
     static void delay(time t) {
         std::this_thread::sleep_for(milliseconds(t));
     }
 
-    // Получить время в данный момент.
+    // Получить время в данный момент в миллисекундах.
     static time time_get() {
         auto current_time = duration_cast<milliseconds>(
             system_clock::now().time_since_epoch()

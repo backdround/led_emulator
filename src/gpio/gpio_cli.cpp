@@ -4,15 +4,19 @@ Gpio_cli::Gpio_cli(bool clear_terminal) {
     clear_terminal_ = clear_terminal;
 
     // При создании отображаем выключеный светодиод.
-    state_ = false;
-    set(state_);
+    set(false);
 }
 
 void Gpio_cli::set(bool new_state) {
 
-    // Проверка на задание текущего состояния.
-    if (state_ == new_state) {
-        return;
+    // Пропуск повторного включения или выключения.
+    if (state_ != State::UNINITED) {
+        if (state_ == State::ON && new_state) {
+            return;
+        }
+        if (state_ == State::OFF && !new_state) {
+            return;
+        }
     }
 
     // Очищаем терминал, при необходимости
@@ -20,10 +24,15 @@ void Gpio_cli::set(bool new_state) {
         system("clear");
     }
 
-    state_ = new_state;
+    // Меняем состояние светодиода
+    if (new_state) {
+        state_ = State::ON;
+    } else {
+        state_ = State::OFF;
+    }
 
     // Выводим состояния светодиода.
-    if (state_) {
+    if (state_ == State::ON) {
         cout << "X" << endl;
     } else {
         cout << "O" << endl;

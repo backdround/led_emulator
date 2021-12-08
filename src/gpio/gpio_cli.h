@@ -17,6 +17,13 @@ private:
     // светодиода.
     bool clear_terminal_;
 
+    // Возможные состояния светодиода.
+    enum class State {
+        UNINITED,
+        ON,
+        OFF
+    };
+
     // Текущее состояние светодиода.
-    bool state_;
+    State state_ = State::UNINITED;
 };
