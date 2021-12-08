@@ -11,6 +11,7 @@ public:
     Gpio_cli(bool clear_terminal);
 
     void set(bool state) override;
+    bool get() override;
 
 private:
     // Флаг необходимости очищать экран перед изменением состояния

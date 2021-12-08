@@ -38,3 +38,7 @@ void Gpio_cli::set(bool new_state) {
         cout << "O" << endl;
     }
 }
+
+bool Gpio_cli::get() {
+    return state_ == State::ON;
+}

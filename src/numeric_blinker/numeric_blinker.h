@@ -20,5 +20,6 @@ public:
 
 private:
     const config& cfg_;
+    ptos::time start_time_;
 };
 } // namespace port

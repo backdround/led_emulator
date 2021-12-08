@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv) {
     // Создание блинкера и его зависимостей.
-    bool clear_terminal = true;
+    bool clear_terminal = false;
     Gpio_cli gpio(clear_terminal);
     port::Numeric_blinker::config cfg = {
         gpio,
